@@ -126,21 +126,23 @@ json_glib_dep = declare_dependency(
   sources: [ json_enum_types_h, json_glib_gir ],
 )
 
-tools = [
-  [ 'json-glib-validate', [ 'json-glib-validate.c', ] ],
-  [ 'json-glib-format', [ 'json-glib-format.c', ] ],
-]
+if get_option('tools')
+  # tools = [
+  #   [ 'json-glib-validate', [ 'json-glib-validate.c', ] ],
+  #   [ 'json-glib-format', [ 'json-glib-format.c', ] ],
+  # ]
 
-foreach t: tools
-  bin_name = t[0]
-  bin_sources = t[1]
+  # foreach t: tools
+  #   bin_name = t[0]
+  #   bin_sources = t[1]
 
-  executable(bin_name, bin_sources,
-             c_args: json_c_args,
-             dependencies: json_glib_dep,
-             install: true)
-endforeach
+  #   executable(bin_name, bin_sources,
+  #             c_args: json_c_args,
+  #             dependencies: json_glib_dep,
+  #             install: true)
+  # endforeach
+endif
 
 if get_option('tests')
-  subdir('tests')
+  # subdir('tests')
 endif
