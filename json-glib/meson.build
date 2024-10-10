@@ -126,10 +126,13 @@ json_glib_dep = declare_dependency(
   sources: [ json_enum_types_h, json_glib_gir ],
 )
 
-tools = [
-  [ 'json-glib-validate', [ 'json-glib-validate.c', ] ],
-  [ 'json-glib-format', [ 'json-glib-format.c', ] ],
-]
+tools = []
+if get_option('tests')
+  tools = [
+    [ 'json-glib-validate', [ 'json-glib-validate.c', ] ],
+    [ 'json-glib-format', [ 'json-glib-format.c', ] ],
+  ]
+endif
 
 foreach t: tools
   bin_name = t[0]
